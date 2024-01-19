@@ -20,7 +20,6 @@ struct Game: Identifiable, Hashable {
     static var emptyGame = Game(name: "", genre: .unset, coverName: nil)
 }
 
-// Hesitez pas mettre vos propres jeux dans la liste
 let availableGames = [
     Game(name: "Elden Ring", genre: .rpg, coverName: "Skyrim.png"),
     Game(name: "Skyrim", genre: .rpg, coverName: "Skyrim.png"),
