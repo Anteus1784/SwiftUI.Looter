@@ -50,11 +50,7 @@ struct ContentView: View {
     
     var body: some View {
         NavigationStack{
-            List { Button(action: {
-                inventory.addItem(item: "Magie de feu")
-            }, label: {
-                Text("Ajouter")
-            })
+            List {
                 ForEach(inventory.loot) { item in
                     NavigationLink() {
                         LootDetailView(item: item)
@@ -76,7 +72,7 @@ struct ContentView: View {
             .sheet(isPresented: $showAddItemView, content: {
                 AddItemView().environmentObject(inventory)
             })
-            .navigationBarTitle("Loot")
+            .navigationBarTitle("💼 Inventaire")
             .toolbar(content: {
                 ToolbarItem(placement: ToolbarItemPlacement.automatic) {
                     Button(action: {

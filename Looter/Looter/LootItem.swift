@@ -92,11 +92,28 @@ enum Rarity : CaseIterable{
         case .rare :
             return .blue
         case .epic :
-            return .purple
+            return .indigo
         case .legendary :
             return .yellow
         case .unique :
-            return .indigo
+            return .purple
+        }
+    }
+    
+    func currentCase() -> String { 
+        switch self {
+        case .common :
+            return "Common"
+        case .uncommon :
+            return "Uncommon"
+        case .rare :
+            return "Rare"
+        case .epic :
+            return "Epic"
+        case .legendary :
+            return "Legendary"
+        case .unique :
+            return "Unique"
         }
     }
 }
