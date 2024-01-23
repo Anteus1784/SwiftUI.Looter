@@ -12,6 +12,9 @@ struct LootDetailView: View {
     
     var item: LootItem
     
+    @State private var isAnimation : Bool = false
+    @State private var selected : Bool = false
+    
     var body: some View {
         GeometryReader { geo in
             
@@ -19,57 +22,68 @@ struct LootDetailView: View {
                 
                 ZStack {
                     VStack{
+                        Spacer()
+                        
                         Text(item.type.getEmoji())
                             .padding()
                             .font(.system(size: 80))
                             .background(item.rarity.getColor())
                             .cornerRadius(25)
-                            .frame(width: geo.size.width/3, height: geo.size.height/3)
+                            
+                            .rotation3DEffect(
+                                .degrees(isAnimation ? 0 : 360), axis: (x: 2.0, y: 1.0, z: 0.0)
+                            )
+                            .animation(.spring, value: isAnimation)
+                            .shadow(color: item.rarity.getColor(), radius: isAnimation ? 50 : 0 )
+                            .animation(.bouncy.delay(0.2), value: isAnimation)
+                            .onTapGesture {
+                                selected.toggle()
+                            }
+                            .scaleEffect(selected ? 1.5 : 1.0)
+                            .animation(.bouncy, value: selected)
+                            .task {
+                                try!
+                                await Task.sleep(nanoseconds: 4)
+                                isAnimation = true
+                            }
+                            
+                        Spacer()
                         
                         Text(item.name).font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/).bold().foregroundStyle(item.rarity.getColor())
                         
                         Spacer()
                         
-                        if (item.rarity.currentCase() == "Unique") {
+                        if (item.rarity == Rarity.unique) {
                             Text("Item unique 🏆")
-                                .cornerRadius(50)
-                                .frame(width: geo.size.width - 50)
                                 .padding()
+                                .frame(width: 350)
+                                .background(item.rarity.getColor())
+                                .shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/).cornerRadius(10)
                                 .font(.title2)
                                 .bold()
-                                
                                 .foregroundStyle(Color.white)
-                                .background(item.rarity.getColor())
+                                .scaleEffect(isAnimation ? 1 : 0)
+                                .animation(.bouncy, value: isAnimation)
+                                
                         }
                     }
-                }.frame(height: geo.size.height/2)
+                }.frame(height: geo.size.height / 2)
                 
                 ZStack {
                     VStack{
                         List {
                             Section(header: Text("INFORMATIONS")){
-                                HStack{
-                                    if let imageCoverName = item.game.coverName, let imageCover = UIImage(named: imageCoverName)
-                                    {
-                                        Image(uiImage: imageCover)
-                                            .resizable()
-                                            .scaledToFit()
-                                            .frame(width: 75)
-                                            .cornerRadius(10)
-                                    } else {
-                                        Image(systemName: "square.slash")
-                                            .resizable()
-                                            .scaledToFit()
-                                            .frame(width: 75)
-                                    }
-                                    Text(item.game.name)
-                                }
+                                GameRow(item : item)
+                                
                                 Text("In-Game : \(item.name)")
+                                
                                 if let attackStrength = item.attackStrength {
                                     Text("Puissance (ATQ) \(attackStrength)")
                                 }
+                                
                                 Text("Possédé(s) : \(item.quantity)")
-                                Text("Rareté : \(item.rarity.currentCase())")
+                                
+                                Text("Rareté : \(String(describing: item.rarity).capitalized)")
                             }
                         }
                     }.frame(width: geo.size.width, height: geo.size.height/2)

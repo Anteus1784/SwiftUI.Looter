@@ -32,14 +32,8 @@ class Inventory : ObservableObject {
             )
     ]
     
-    func addItem(item: String) {
-        loot.append(LootItem(quantity : 6,
-                             name : "Pouvoir du Test",
-                             type : ItemType.fire,
-                             rarity : Rarity.uncommon,
-                             attackStrength : 7,
-                             game : availableGames[3]
-                        ))
+    func addItem(item : LootItem) {
+        loot.append(item)
     }
 }
 
@@ -55,17 +49,7 @@ struct ContentView: View {
                     NavigationLink() {
                         LootDetailView(item: item)
                     } label: {
-                        VStack(alignment: .leading) {
-                            HStack(alignment: .center) {
-                                Circle().fill(item.rarity.getColor()).frame(height: 12)
-                                Text(item.name)
-                                Spacer(minLength: 50)
-                                Text(item.type.getEmoji())
-                            }
-                            HStack(alignment: .center) {
-                                Text("Quantité : \(item.quantity)")
-                            }
-                        }
+                        LootRow(item: item)
                     }
                 }
             }

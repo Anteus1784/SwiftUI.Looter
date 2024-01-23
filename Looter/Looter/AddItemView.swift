@@ -21,6 +21,10 @@ struct AddItemView: View {
     @State var attackStrength : Int = 0
     @State private var areTogglesOn: Bool = false
     
+    @State var showErrorMessageName = false
+    @State var showErrorMessageType = false
+    @State var showErrorMessageGame = false
+    
     var body: some View {
         
         Form {
@@ -66,22 +70,44 @@ struct AddItemView: View {
             
             Section{
                 Toggle("Item d'attaque ?", isOn: $areTogglesOn)
-                Stepper(value: $attackStrength,
-                        in: 0...10,
-                        step: 1) {
-                    Text("Force d'attaque : \(attackStrength)")}
-            //TODO: Faire en sorte de rendre attackStrength Int?
+                if areTogglesOn {
+                    Stepper(value: $attackStrength,
+                            in: 0...10,
+                            step: 1) {
+                        Text("Force d'attaque : \(attackStrength)")}
+                }
                 
             }
-        }
-        
-        Section {
-            Button(action: {
-                inventory.addItem(item: name)
-                dismiss()
-            }, label: {
-                Text("Ajouter l'objet")
-            })
+            
+            
+            Section {
+                Button(action: {
+                    
+                    var item : LootItem = LootItem(quantity:quantity,
+                                                   name: name,
+                                                   type: itemType,
+                                                   rarity: rarity,
+                                                   attackStrength: areTogglesOn ? attackStrength : nil,
+                                                   game: game)
+                    if item.name.count < 3 || item.name.isEmpty{
+                        showErrorMessageName = true
+                        return
+                    }
+                    if item.type == ItemType.unknown {
+                        showErrorMessageType = true
+                        return
+                    }
+                    if item.game == Game.emptyGame {
+                        showErrorMessageGame = true
+                        return
+                    }
+                    
+                    inventory.addItem(item: item)
+                    dismiss()
+                }, label: {
+                    Text("Ajouter l'objet")
+                })
+            }
         }
     }
 }

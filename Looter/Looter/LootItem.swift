@@ -99,23 +99,6 @@ enum Rarity : CaseIterable{
             return .purple
         }
     }
-    
-    func currentCase() -> String { 
-        switch self {
-        case .common :
-            return "Common"
-        case .uncommon :
-            return "Uncommon"
-        case .rare :
-            return "Rare"
-        case .epic :
-            return "Epic"
-        case .legendary :
-            return "Legendary"
-        case .unique :
-            return "Unique"
-        }
-    }
 }
 
 struct LootItem : Identifiable {
