@@ -12,6 +12,13 @@
 		1D00261B2B5AD81300DCD337 /* LootDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D00261A2B5AD81300DCD337 /* LootDetailView.swift */; };
 		1D008C262B5FC45E008E76CA /* LootRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D008C252B5FC45E008E76CA /* LootRow.swift */; };
 		1D008C282B5FC5B5008E76CA /* GameRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D008C272B5FC5B5008E76CA /* GameRow.swift */; };
+		1DBA99962B63970800AB6B39 /* OnBoardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DBA99952B63970800AB6B39 /* OnBoardingView.swift */; };
+		1DBA99992B639BDD00AB6B39 /* OnboardingScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DBA99982B639BDD00AB6B39 /* OnboardingScreenView.swift */; };
+		1DBA999B2B639C3200AB6B39 /* OnboardingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DBA999A2B639C3200AB6B39 /* OnboardingItem.swift */; };
+		1DBA99BB2B63DD8900AB6B39 /* LootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DBA99BA2B63DD8900AB6B39 /* LootView.swift */; };
+		1DBA99BD2B63DD9900AB6B39 /* WishListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DBA99BC2B63DD9900AB6B39 /* WishListView.swift */; };
+		1DBA99BF2B63DDB000AB6B39 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DBA99BE2B63DDB000AB6B39 /* ProfileView.swift */; };
+		1DBA99C22B63DF9000AB6B39 /* Inventory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DBA99C12B63DF9000AB6B39 /* Inventory.swift */; };
 		1DDFE2FD2B5A795C009355DC /* LooterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DDFE2FC2B5A795C009355DC /* LooterApp.swift */; };
 		1DDFE2FF2B5A795C009355DC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DDFE2FE2B5A795C009355DC /* ContentView.swift */; };
 		1DDFE3012B5A795E009355DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1DDFE3002B5A795E009355DC /* Assets.xcassets */; };
@@ -25,6 +32,13 @@
 		1D00261A2B5AD81300DCD337 /* LootDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LootDetailView.swift; sourceTree = "<group>"; };
 		1D008C252B5FC45E008E76CA /* LootRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LootRow.swift; sourceTree = "<group>"; };
 		1D008C272B5FC5B5008E76CA /* GameRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRow.swift; sourceTree = "<group>"; };
+		1DBA99952B63970800AB6B39 /* OnBoardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingView.swift; sourceTree = "<group>"; };
+		1DBA99982B639BDD00AB6B39 /* OnboardingScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingScreenView.swift; sourceTree = "<group>"; };
+		1DBA999A2B639C3200AB6B39 /* OnboardingItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingItem.swift; sourceTree = "<group>"; };
+		1DBA99BA2B63DD8900AB6B39 /* LootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LootView.swift; sourceTree = "<group>"; };
+		1DBA99BC2B63DD9900AB6B39 /* WishListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListView.swift; sourceTree = "<group>"; };
+		1DBA99BE2B63DDB000AB6B39 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		1DBA99C12B63DF9000AB6B39 /* Inventory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inventory.swift; sourceTree = "<group>"; };
 		1DDFE2F92B5A795C009355DC /* Looter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Looter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DDFE2FC2B5A795C009355DC /* LooterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LooterApp.swift; sourceTree = "<group>"; };
 		1DDFE2FE2B5A795C009355DC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -44,6 +58,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1DBA99922B6395EA00AB6B39 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1DDFE2FE2B5A795C009355DC /* ContentView.swift */,
+				1DBA99BA2B63DD8900AB6B39 /* LootView.swift */,
+				1DBA99BC2B63DD9900AB6B39 /* WishListView.swift */,
+				1DBA99BE2B63DDB000AB6B39 /* ProfileView.swift */,
+				1D00261A2B5AD81300DCD337 /* LootDetailView.swift */,
+				1DDFE30A2B5A8097009355DC /* AddItemView.swift */,
+				1DBA99982B639BDD00AB6B39 /* OnboardingScreenView.swift */,
+				1DBA99952B63970800AB6B39 /* OnBoardingView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1DBA99972B63971F00AB6B39 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				1D00260C2B5AB1CC00DCD337 /* Game.swift */,
+				1D00260A2B5AAD1100DCD337 /* LootItem.swift */,
+				1DBA999A2B639C3200AB6B39 /* OnboardingItem.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		1DBA99C02B63DF7800AB6B39 /* ModelsView */ = {
+			isa = PBXGroup;
+			children = (
+				1DBA99C12B63DF9000AB6B39 /* Inventory.swift */,
+			);
+			path = ModelsView;
+			sourceTree = "<group>";
+		};
 		1DDFE2F02B5A795C009355DC = {
 			isa = PBXGroup;
 			children = (
@@ -64,11 +111,9 @@
 			isa = PBXGroup;
 			children = (
 				1DDFE2FC2B5A795C009355DC /* LooterApp.swift */,
-				1DDFE2FE2B5A795C009355DC /* ContentView.swift */,
-				1DDFE30A2B5A8097009355DC /* AddItemView.swift */,
-				1D00260A2B5AAD1100DCD337 /* LootItem.swift */,
-				1D00260C2B5AB1CC00DCD337 /* Game.swift */,
-				1D00261A2B5AD81300DCD337 /* LootDetailView.swift */,
+				1DBA99C02B63DF7800AB6B39 /* ModelsView */,
+				1DBA99972B63971F00AB6B39 /* Models */,
+				1DBA99922B6395EA00AB6B39 /* View */,
 				1D008C252B5FC45E008E76CA /* LootRow.swift */,
 				1D008C272B5FC5B5008E76CA /* GameRow.swift */,
 				1DDFE3002B5A795E009355DC /* Assets.xcassets */,
@@ -157,12 +202,19 @@
 			files = (
 				1DDFE2FF2B5A795C009355DC /* ContentView.swift in Sources */,
 				1D008C262B5FC45E008E76CA /* LootRow.swift in Sources */,
+				1DBA999B2B639C3200AB6B39 /* OnboardingItem.swift in Sources */,
 				1D008C282B5FC5B5008E76CA /* GameRow.swift in Sources */,
+				1DBA99962B63970800AB6B39 /* OnBoardingView.swift in Sources */,
 				1D00260D2B5AB1CC00DCD337 /* Game.swift in Sources */,
+				1DBA99BB2B63DD8900AB6B39 /* LootView.swift in Sources */,
 				1DDFE30B2B5A8097009355DC /* AddItemView.swift in Sources */,
 				1D00261B2B5AD81300DCD337 /* LootDetailView.swift in Sources */,
 				1D00260B2B5AAD1100DCD337 /* LootItem.swift in Sources */,
 				1DDFE2FD2B5A795C009355DC /* LooterApp.swift in Sources */,
+				1DBA99BD2B63DD9900AB6B39 /* WishListView.swift in Sources */,
+				1DBA99C22B63DF9000AB6B39 /* Inventory.swift in Sources */,
+				1DBA99BF2B63DDB000AB6B39 /* ProfileView.swift in Sources */,
+				1DBA99992B639BDD00AB6B39 /* OnboardingScreenView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -102,11 +102,13 @@ enum Rarity : CaseIterable{
 }
 
 struct LootItem : Identifiable {
-    let id = UUID()
+    var id = UUID()
     var quantity : Int
     var name : String
     var type : ItemType
     var rarity : Rarity
     var attackStrength : Int?
     var game : Game
+    
+    static var emptyLoot = LootItem(quantity: 0, name: "", type: ItemType.unknown, rarity: Rarity.common, game: Game.emptyGame)
 }

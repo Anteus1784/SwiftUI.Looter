@@ -9,9 +9,19 @@ import SwiftUI
 
 @main
 struct LooterApp: App {
+    
+    @AppStorage("FirstTime") var isOnboardingDone: Bool = false
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            if isOnboardingDone {
+                ContentView(action: {isOnboardingDone = false})
+            }
+            else {
+                OnboardingScreenView(starting:
+                    {isOnboardingDone = true}
+                )
+            }
         }
     }
 }

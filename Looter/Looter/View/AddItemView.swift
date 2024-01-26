@@ -8,11 +8,16 @@
 import Foundation
 import SwiftUI
 
+enum ActiveAlert{
+    case name, type, game
+}
+
 struct AddItemView: View {
-    @Environment(\.dismiss) var dismiss
+    @Environment(\.dismiss) private var dismiss
     
     @EnvironmentObject var inventory: Inventory
     
+    @State var id : UUID? = nil
     @State var name : String = ""
     @State var quantity: Int = 0
     @State var itemType : ItemType = .unknown
@@ -21,12 +26,10 @@ struct AddItemView: View {
     @State var attackStrength : Int = 0
     @State private var areTogglesOn: Bool = false
     
-    @State var showErrorMessageName = false
-    @State var showErrorMessageType = false
-    @State var showErrorMessageGame = false
+    @State private var showError = false
+    @State private var activeAlert: ActiveAlert = ActiveAlert.name
     
     var body: some View {
-        
         Form {
             Section{
                 TextField("Nom de l'objet", text: $name)
@@ -83,30 +86,60 @@ struct AddItemView: View {
             Section {
                 Button(action: {
                     
-                    var item : LootItem = LootItem(quantity:quantity,
-                                                   name: name,
-                                                   type: itemType,
-                                                   rarity: rarity,
-                                                   attackStrength: areTogglesOn ? attackStrength : nil,
-                                                   game: game)
-                    if item.name.count < 3 || item.name.isEmpty{
-                        showErrorMessageName = true
+                    if name.count < 3 || name.isEmpty{
+                        activeAlert = ActiveAlert.name
+                        showError = true
                         return
                     }
-                    if item.type == ItemType.unknown {
-                        showErrorMessageType = true
+                    if itemType == ItemType.unknown {
+                        activeAlert = ActiveAlert.type
+                        showError = true
                         return
                     }
-                    if item.game == Game.emptyGame {
-                        showErrorMessageGame = true
+                    if game == Game.emptyGame {
+                        activeAlert = ActiveAlert.game
+                        showError = true
                         return
                     }
                     
-                    inventory.addItem(item: item)
+                    if (id == nil) {
+                        let item = LootItem(
+                            quantity:quantity,
+                            name: name,
+                            type: itemType,
+                            rarity: rarity,
+                            attackStrength: areTogglesOn ? attackStrength : nil,
+                            game: game)
+                        inventory.addItem(item: item)
+                    }
+                    else {
+                        let item = LootItem(
+                            id: id!,
+                            quantity:quantity,
+                            name: name,
+                            type: itemType,
+                            rarity: rarity,
+                            attackStrength: areTogglesOn ? attackStrength : nil,
+                            game: game)
+                        if let row = inventory.loot.firstIndex(where: { $0.id == self.id}) {
+                            inventory.loot[row] = item
+                        }
+                        
+                    }
+                    
                     dismiss()
                 }, label: {
                     Text("Ajouter l'objet")
-                })
+                }).alert(isPresented: $showError){
+                    switch activeAlert {
+                    case .name:
+                        Alert(title: Text("Erreur avec le nom"), message: Text("Le nom doit être supérieur à trois caractère"))
+                    case .type:
+                        Alert(title: Text("Erreur avec le type"), message: Text("Le type ne doit pas être unknown"))
+                    case .game:
+                        Alert(title: Text("Erreur avec le jeu"), message: Text("Le jeu doit être rensigné"))
+                    }
+                }
             }
         }
     }
